@@ -1,0 +1,156 @@
+// Variables derived from Athenaeum design system
+$primary: #535845;
+$surface: #faf9f5;
+$surface-80: rgba(250, 249, 245, 0.8);
+$on-surface-variant: #464740;
+$surface-container: #efeeea;
+$outline-variant: #c7c7bd;
+
+// Fonts
+$font-display: 'Playfair Display', serif;
+$font-body: 'Inter', sans-serif;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 50;
+  background-color: $surface-80;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.header-container {
+  padding: 1rem 20px;
+  
+  @media (min-width: 768px) {
+    padding: 1rem 64px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+}
+
+.desktop-nav {
+  display: none;
+  
+  @media (min-width: 768px) {
+    @include flex-between;
+  }
+}
+
+.mobile-nav {
+  @include flex-between;
+  background-color: $surface;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.brand {
+  font-family: $font-display;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  color: $primary;
+  font-style: italic;
+}
+
+.brand-mobile {
+  font-family: $font-display;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 36px;
+  color: $primary;
+  font-style: italic;
+}
+
+.nav-links {
+  @include flex-center;
+  gap: 24px;
+}
+
+.nav-link {
+  color: $on-surface-variant;
+  font-family: $font-body;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 0;
+  text-decoration: none;
+  transition: color 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    color: $primary;
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &.active {
+    color: $primary;
+    font-weight: 700;
+    border-bottom: 2px solid $primary;
+  }
+}
+
+.trailing-actions {
+  @include flex-center;
+  gap: 1rem;
+}
+
+.icon-button {
+  color: $on-surface-variant;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+
+  &:hover {
+    color: $primary;
+  }
+  
+  .material-symbols-outlined {
+    font-size: 24px;
+    vertical-align: middle;
+  }
+}
+
+.profile-button {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background-color: $surface-container;
+  overflow: hidden;
+  border: 1px solid rgba(199, 199, 189, 0.3);
+  padding: 0;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.menu-icon {
+  color: $primary;
+  cursor: pointer;
+}
