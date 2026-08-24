@@ -1,0 +1,70 @@
+<aside class="space-y-6">
+  <div class="sticky top-28 bg-surface-container-lowest rounded-xl p-6 shadow-organic-level-1 border border-outline-variant/20">
+    <h3 class="font-headline-md text-headline-md text-on-surface mb-6 flex items-center gap-2">
+      <span class="material-symbols-outlined text-primary">filter_list</span> Filters
+    </h3>
+    <div class="space-y-5">
+      <!-- Sort By -->
+      <div class="flex flex-col gap-2">
+        <label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-xs">Sort By</label>
+        <select class="w-full bg-surface border border-outline-variant/50 rounded-lg py-2 px-3 text-body-md focus:ring-primary focus:border-primary text-on-surface">
+          <option>Recently Added</option>
+          <option>Title (A-Z)</option>
+          <option>Author (A-Z)</option>
+          <option>Publication Year</option>
+        </select>
+      </div>
+      <!-- Availability -->
+      <div class="flex flex-col gap-2">
+        <label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-xs">Availability</label>
+        <select class="w-full bg-surface border border-outline-variant/50 rounded-lg py-2 px-3 text-body-md focus:ring-primary focus:border-primary text-on-surface">
+          <option>All</option>
+          <option>Available Only</option>
+          <option>Currently Borrowed</option>
+          <option>Reserved</option>
+        </select>
+      </div>
+      <!-- Language -->
+      <div class="flex flex-col gap-2">
+        <label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-xs">Language</label>
+        <select class="w-full bg-surface border border-outline-variant/50 rounded-lg py-2 px-3 text-body-md focus:ring-primary focus:border-primary text-on-surface">
+          <option>English</option>
+          <option>Arabic</option>
+          <option>French</option>
+        </select>
+      </div>
+      <!-- Format -->
+      <div class="flex flex-col gap-2">
+        <label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-xs">Format</label>
+        <div class="flex flex-wrap gap-2 mt-1">
+          <button class="px-3 py-1 rounded-full border border-outline-variant/30 text-xs font-label-md hover:border-primary">Hardcover</button>
+          <button class="px-3 py-1 rounded-full border border-outline-variant/30 text-xs font-label-md hover:border-primary">Paperback</button>
+          <button class="px-3 py-1 rounded-full border border-outline-variant/30 text-xs font-label-md hover:border-primary">E-book</button>
+        </div>
+      </div>
+      <!-- Rating -->
+      <div class="flex flex-col gap-2">
+        <label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-xs">Rating</label>
+        <div class="space-y-2">
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+            <span class="text-body-md text-on-surface-variant">4 Stars &amp; Up</span>
+          </label>
+        </div>
+      </div>
+      <!-- Publication Year Slider -->
+      <div class="flex flex-col gap-3 pt-2">
+        <label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-xs">Publication Year</label>
+        <div class="relative w-full h-1 bg-secondary/20 rounded-full mt-2">
+          <div class="absolute w-2/3 h-full bg-primary rounded-full left-1/4"></div>
+          <div class="absolute w-6 h-6 bg-primary rounded-full -top-2.5 left-1/4 shadow-sm border-2 border-surface-container-lowest cursor-pointer"></div>
+          <div class="absolute w-6 h-6 bg-primary rounded-full -top-2.5 left-[calc(25%+66%)] shadow-sm border-2 border-surface-container-lowest cursor-pointer"></div>
+        </div>
+        <div class="flex justify-between font-caption text-caption text-outline mt-1">
+          <span>1900</span>
+          <span>2024</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</aside>
