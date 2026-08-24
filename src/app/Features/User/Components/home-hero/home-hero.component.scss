@@ -1,0 +1,128 @@
+// Colors
+$primary: #535845;
+$on-primary: #ffffff;
+$outline-variant: #c7c7bd;
+$outline: #77786f;
+$surface-container-lowest: #ffffff;
+$on-surface-variant: #464740;
+$on-surface: #1b1c1a;
+
+// Typography
+$font-display: 'Playfair Display', serif;
+$font-body: 'Inter', sans-serif;
+
+.hero-section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  text-align: center;
+  max-width: 48rem; // 768px
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.hero-title {
+  font-family: $font-display;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+  color: $on-surface;
+  margin: 0;
+  
+  @media (min-width: 768px) {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56px;
+    letter-spacing: -0.02em;
+  }
+}
+
+.hero-description {
+  font-family: $font-body;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+  color: $on-surface-variant;
+  max-width: 36rem; // 576px
+  margin: 0;
+}
+
+.search-container {
+  width: 100%;
+  position: relative;
+  margin-top: 16px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $outline;
+  font-size: 24px; // material symbols default
+}
+
+.search-input {
+  width: 100%;
+  padding: 16px 16px 16px 48px;
+  border-radius: 12px;
+  border: 1px solid rgba(199, 199, 189, 0.5); // outline-variant / 50
+  background-color: $surface-container-lowest;
+  box-shadow: 0 10px 24px -4px rgba(83, 88, 69, 0.04);
+  font-family: $font-body;
+  font-size: 16px;
+  color: $on-surface;
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: $outline;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $primary;
+    box-shadow: 0 0 0 1px $primary, 0 10px 24px -4px rgba(83, 88, 69, 0.04);
+  }
+}
+
+.category-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.category-pill {
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-family: $font-body;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  border: 1px solid $outline-variant;
+  color: $on-surface-variant;
+  background-color: $surface-container-lowest;
+
+  &:hover {
+    border-color: $primary;
+    color: $primary;
+  }
+
+  &.active {
+    background-color: $primary;
+    color: $on-primary;
+    border-color: $primary;
+    
+    &:hover {
+      background-color: rgba(83, 88, 69, 0.9); // primary / 90
+      color: $on-primary;
+    }
+  }
+}
