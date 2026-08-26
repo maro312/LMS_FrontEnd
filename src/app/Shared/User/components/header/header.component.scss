@@ -22,6 +22,11 @@ $font-body: 'Inter', sans-serif;
   align-items: center;
 }
 
+:host {
+  display: block;
+  padding-top: 80px; // Spacer for the fixed header
+}
+
 .header-nav {
   position: fixed;
   top: 0;
@@ -33,10 +38,10 @@ $font-body: 'Inter', sans-serif;
 }
 
 .header-container {
-  padding: 1rem 20px;
+  padding: 1.25rem 20px 1rem 20px;
   
   @media (min-width: 768px) {
-    padding: 1rem 64px;
+    padding: 1.25rem 64px 1rem 64px;
     max-width: 1280px;
     margin: 0 auto;
   }

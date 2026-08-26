@@ -1,0 +1,99 @@
+<h2 class="view-title">Create Your Account</h2>
+
+<form class="auth-form" (ngSubmit)="onRegister()">
+  <!-- Full Name Field -->
+  <div class="form-group">
+    <label for="name-register">Full Name</label>
+    <div class="input-wrapper">
+      <span class="material-symbols-outlined input-icon">person</span>
+      <input 
+        type="text" 
+        id="name-register" 
+        name="name"
+        placeholder="Jane Doe" 
+        [(ngModel)]="registerData.name"
+        required>
+    </div>
+  </div>
+
+  <!-- Email Field -->
+  <div class="form-group">
+    <label for="email-register">Email Address</label>
+    <div class="input-wrapper">
+      <span class="material-symbols-outlined input-icon">mail</span>
+      <input 
+        type="email" 
+        id="email-register" 
+        name="email"
+        placeholder="scholar@institution.edu" 
+        [(ngModel)]="registerData.email"
+        required>
+    </div>
+  </div>
+
+  <!-- Password Field -->
+  <div class="form-group">
+    <label for="password-register">Password</label>
+    <div class="input-wrapper">
+      <span class="material-symbols-outlined input-icon">lock</span>
+      <input 
+        [type]="showRegisterPassword ? 'text' : 'password'" 
+        id="password-register" 
+        name="password"
+        placeholder="••••••••" 
+        [(ngModel)]="registerData.password"
+        required>
+      <button 
+        type="button" 
+        class="icon-btn right" 
+        (click)="toggleRegisterPassword()">
+        <span class="material-symbols-outlined">
+          {{ showRegisterPassword ? 'visibility_off' : 'visibility' }}
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Confirm Password Field -->
+  <div class="form-group">
+    <label for="confirm-password-register">Confirm Password</label>
+    <div class="input-wrapper">
+      <span class="material-symbols-outlined input-icon">lock</span>
+      <input 
+        [type]="showConfirmPassword ? 'text' : 'password'" 
+        id="confirm-password-register" 
+        name="confirmPassword"
+        placeholder="••••••••" 
+        [(ngModel)]="registerData.confirmPassword"
+        required>
+      <button 
+        type="button" 
+        class="icon-btn right" 
+        (click)="toggleConfirmPassword()">
+        <span class="material-symbols-outlined">
+          {{ showConfirmPassword ? 'visibility_off' : 'visibility' }}
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Consent -->
+  <div class="checkbox-group mt-6">
+    <input 
+      type="checkbox" 
+      id="terms" 
+      name="agreeTerms"
+      [(ngModel)]="registerData.agreeTerms"
+      required>
+    <label for="terms">
+      I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+    </label>
+  </div>
+
+  <!-- CTA -->
+  <div *ngIf="registerError" class="error-message">
+    <span class="material-symbols-outlined">error</span>
+    {{ registerError }}
+  </div>
+  <button type="submit" class="submit-btn mt-6">Create Account</button>
+</form>

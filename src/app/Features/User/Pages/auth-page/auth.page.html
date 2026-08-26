@@ -1,0 +1,55 @@
+<div class="auth-container">
+  <div class="auth-wrapper">
+    <!-- Brand Header -->
+    <div class="brand-header">
+      <span class="material-symbols-outlined brand-icon">auto_stories</span>
+      <h1 class="brand-title">Athenaeum</h1>
+      <p class="brand-subtitle">Library Portal</p>
+    </div>
+
+    <!-- Authentication Card -->
+    <div class="auth-card">
+      <!-- Tab Navigation -->
+      <div class="tab-navigation">
+        <button 
+          class="tab-btn" 
+          [class.active]="currentTab === 'signin'" 
+          (click)="switchTab('signin')">
+          Sign In
+        </button>
+        <button 
+          class="tab-btn" 
+          [class.active]="currentTab === 'register'" 
+          (click)="switchTab('register')">
+          Create Account
+        </button>
+      </div>
+
+      <!-- Content Views -->
+      <div class="tab-content" [class.active]="currentTab === 'signin'">
+        <app-auth></app-auth>
+        <div class="footer-text">
+          <p>
+            Don't have an account? 
+            <a href="javascript:void(0)" (click)="switchTab('register')">Create Account</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="tab-content" [class.active]="currentTab === 'register'">
+        <app-register></app-register>
+        <div class="footer-text">
+          <p>
+            Already have an account? 
+            <a href="javascript:void(0)" (click)="switchTab('signin')">Sign In</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Decorative footer texture text -->
+    <div class="decorative-footer">
+      <p>Non scholae, sed vitae discimus.</p>
+    </div>
+  </div>
+</div>
