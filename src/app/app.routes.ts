@@ -1,9 +1,12 @@
 import { Routes } from '@angular/router';
 import { HomePage } from './Features/User/Pages/home/home.page';
 import { CataloguePage } from './Features/User/Pages/catalogue/catalogue.page';
+import { AuthPage } from './Features/User/Pages/auth-page/auth.page';
+import { authGuard } from './Shared/Guards/auth.guard';
 
 export const routes: Routes = [
-  { path: '', component: HomePage },
-  { path: 'catalogue', component: CataloguePage },
+  { path: 'auth', component: AuthPage },
+  { path: '', component: HomePage, canActivate: [authGuard] },
+  { path: 'catalogue', component: CataloguePage, canActivate: [authGuard] },
   { path: '**', redirectTo: '' }
 ];
