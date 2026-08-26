@@ -2,7 +2,8 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService, LoginResponse } from '../../../../Shared/Services/auth.service';
+import { AuthService } from '../../../../Shared/Services/auth.service';
+import { LoginResponse } from '../../../../Shared/Models/Auth/login-response';
 import { LoginData } from './Models/loginData';
 
 @Component({
