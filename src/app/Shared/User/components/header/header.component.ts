@@ -7,4 +7,15 @@ import { RouterLink } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class Header {}
+export class Header {
+  isProfileMenuOpen = false;
+
+  toggleProfileMenu() {
+    this.isProfileMenuOpen = !this.isProfileMenuOpen;
+  }
+
+  logout() {
+    // TODO: Add actual logout logic via Auth service here
+    console.log('Logout clicked');
+  }
+}

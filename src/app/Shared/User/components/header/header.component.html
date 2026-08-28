@@ -17,9 +17,20 @@
       <button class="icon-button">
         <span class="material-symbols-outlined">notifications</span>
       </button>
-      <button class="profile-button">
-        <img alt="User profile settings" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8ZcTyigOXyRKCgJqwWv24Ghuw9S9Dw9XVH1qPG0RF5HXcuYIIfNCFSPX2PgCzN_pjAAj9srXBN12sXJqOfWm1Otu2aqSaXOblJVYpsLqPoSJgZIkG1zCQDIZY8tLbdaGom43qPV0wyGQe7PkbC53cdUbDRMe1zINh76eKmIMI05vCr-pkord_PsemWFlFqEf3KBobyKjuJFHjfNjz7PgzazF5PdTNbXSEPRcqCATSVLAKDlhGPlzAUg">
-      </button>
+      <div class="profile-container">
+        <button class="profile-button" (click)="toggleProfileMenu()">
+          <img alt="User profile settings" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8ZcTyigOXyRKCgJqwWv24Ghuw9S9Dw9XVH1qPG0RF5HXcuYIIfNCFSPX2PgCzN_pjAAj9srXBN12sXJqOfWm1Otu2aqSaXOblJVYpsLqPoSJgZIkG1zCQDIZY8tLbdaGom43qPV0wyGQe7PkbC53cdUbDRMe1zINh76eKmIMI05vCr-pkord_PsemWFlFqEf3KBobyKjuJFHjfNjz7PgzazF5PdTNbXSEPRcqCATSVLAKDlhGPlzAUg">
+        </button>
+
+        @if (isProfileMenuOpen) {
+          <div class="profile-menu">
+            <button class="menu-item logout-button" (click)="logout()">
+              <span class="material-symbols-outlined">logout</span>
+              Logout
+            </button>
+          </div>
+        }
+      </div>
     </div>
   </div>
 
