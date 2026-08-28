@@ -7,7 +7,32 @@
     </div>
     
     <div class="md:col-span-9">
-      <!-- Book grid will go here -->
+      @if (store.isLoading()) {
+        <div class="flex justify-center py-12">
+          <p class="text-on-surface-variant">Loading books...</p>
+        </div>
+      } @else if (store.error()) {
+        <div class="bg-error-container text-on-error-container p-4 rounded-xl">
+          <p>{{ store.error() }}</p>
+        </div>
+      } @else {
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          @for (book of store.books(); track book.id) {
+            <app-book-card [book]="book"></app-book-card>
+          }
+          @empty {
+            <div class="col-span-full py-12 text-center text-on-surface-variant">
+              <p>No books found.</p>
+            </div>
+          }
+        </div>
+        
+        <app-pagination 
+          [currentPage]="store.currentPage()"
+          [totalPages]="store.totalPages()"
+          (pageChange)="onPageChange($event)">
+        </app-pagination>
+      }
     </div>
   </div>
 </div>
