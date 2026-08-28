@@ -1,0 +1,47 @@
+@if (totalPages > 1) {
+  <div class="mt-12 flex items-center justify-center gap-2">
+      <button 
+        (click)="onPrevClick()"
+        [disabled]="currentPage === 1"
+        class="flex items-center justify-center w-10 h-10 rounded-lg border border-outline-variant/30 transition-colors duration-200"
+        [class.text-outline]="currentPage === 1"
+        [class.text-on-surface-variant]="currentPage !== 1"
+        [class.hover:bg-primary/5]="currentPage !== 1"
+        [class.hover:text-primary]="currentPage !== 1"
+        [class.hover:border-primary]="currentPage !== 1">
+          <span class="material-symbols-outlined">chevron_left</span>
+      </button>
+      
+      <div class="flex items-center gap-1">
+        @for (page of pages; track page) {
+          @if (page === '...') {
+            <span class="px-2 text-outline">...</span>
+          } @else {
+            <button 
+              (click)="onPageClick(page)"
+              class="w-10 h-10 rounded-lg font-label-md text-label-md flex items-center justify-center transition-colors duration-200"
+              [class.bg-primary]="page === currentPage"
+              [class.text-on-primary]="page === currentPage"
+              [class.shadow-sm]="page === currentPage"
+              [class.text-on-surface-variant]="page !== currentPage"
+              [class.hover:bg-primary/5]="page !== currentPage"
+              [class.hover:text-primary]="page !== currentPage">
+              {{ page }}
+            </button>
+          }
+        }
+      </div>
+      
+      <button 
+        (click)="onNextClick()"
+        [disabled]="currentPage === totalPages"
+        class="flex items-center justify-center w-10 h-10 rounded-lg border border-outline-variant/30 transition-colors duration-200"
+        [class.text-outline]="currentPage === totalPages"
+        [class.text-on-surface-variant]="currentPage !== totalPages"
+        [class.hover:bg-primary/5]="currentPage !== totalPages"
+        [class.hover:text-primary]="currentPage !== totalPages"
+        [class.hover:border-primary]="currentPage !== totalPages">
+          <span class="material-symbols-outlined">chevron_right</span>
+      </button>
+  </div>
+}

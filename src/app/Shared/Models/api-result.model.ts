@@ -21,3 +21,11 @@ export interface ApiListResult<T> {
   errors: string[] | null;
   validationErrors: { field: string; message: string }[] | null;
 }
+
+export interface PagedResult<T> {
+  items: T[];
+  totalCount: number;
+  pageNumber: number;
+  pageSize: number;
+  totalPages: number;
+}
