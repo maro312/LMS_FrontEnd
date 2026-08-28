@@ -1,0 +1,24 @@
+@if (store.selectedBook(); as book) {
+<div class="relative w-full max-w-[300px] lg:max-w-full aspect-[2/3] rounded-lg overflow-hidden ambient-shadow border border-outline-variant/20 bg-surface-container-lowest mb-6">
+  @if (book.bookPhotoUrl && !imageError) {
+    <img class="w-full h-full object-cover" [alt]="book.title" [src]="getPhotoUrl(book.bookPhotoUrl)" (error)="imageError = true">
+  } @else {
+    <div class="w-full h-full bg-primary/5 flex items-center justify-center text-primary/20">
+      <span class="material-symbols-outlined text-6xl">book</span>
+    </div>
+  }
+</div>
+<div class="flex flex-wrap gap-3 w-full justify-center lg:justify-start">
+  <span class="inline-flex items-center px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md">
+    Category
+  </span>
+  <span class="inline-flex items-center px-3 py-1 rounded-full border text-primary font-label-md text-label-md" 
+    [class.border-primary]="book.isAvailable" 
+    [class.text-primary]="book.isAvailable" 
+    [class.border-outline]="!book.isAvailable"
+    [class.text-outline]="!book.isAvailable">
+    <span class="w-2 h-2 rounded-full mr-2" [class.bg-primary]="book.isAvailable" [class.bg-outline]="!book.isAvailable"></span>
+    {{ book.isAvailable ? 'Available' : 'Unavailable' }}
+  </span>
+</div>
+}
