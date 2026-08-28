@@ -1,0 +1,32 @@
+<article class="bg-surface-container-lowest h-full rounded-xl overflow-hidden shadow-organic-level-1 border border-outline-variant/10 flex flex-col group hover:shadow-organic-level-2 transition-shadow duration-300">
+  <div class="aspect-[2/3] w-full bg-surface-container relative overflow-hidden p-4 flex items-center justify-center">
+    <div class="absolute inset-0 bg-gradient-to-tr from-surface-variant/40 to-transparent"></div>
+    @if (book.bookPhotoUrl && !imageError) {
+      <img class="w-full h-full object-cover shadow-sm group-hover:scale-105 transition-transform duration-500 z-10 rounded-sm" 
+      [src]="getPhotoUrl()" [alt]="book.title" (error)="imageError = true"/>
+    } @else {
+      <div class="w-full h-full bg-primary/5 flex items-center justify-center text-primary/20">
+        <span class="material-symbols-outlined text-4xl">book</span>
+      </div>
+    }
+  </div>
+  <div class="p-4 flex flex-col flex-grow gap-2">
+    <div class="flex justify-between items-center">
+      <div class="flex gap-1 flex-wrap">
+        <span class="bg-primary/10 text-primary text-[10px] font-label-md px-2 py-0.5 rounded-full">{{ book.availableCopies }} / {{ book.totalCopies }} Copies</span>
+      </div>
+    </div>
+    <h4 class="font-headline-md text-[18px] leading-tight text-on-surface mt-1 group-hover:text-primary transition-colors">{{ book.title }}</h4>
+    <p class="font-body-md text-caption text-on-surface-variant">{{ book.author }}</p>
+    <p class="text-xs text-outline line-clamp-1">Publisher: {{ book.publisherName || 'Unknown' }}</p>
+    <div class="mt-2">
+      <span class="flex items-center gap-1 text-[10px] font-label-md px-2 py-1 rounded-lg w-fit" [class]="getAvailabilityClass()">
+        <span class="w-1.5 h-1.5 rounded-full" [class]="getAvailabilityDotClass()"></span>
+        {{ book.isAvailable ? 'Available' : 'Unavailable' }}
+      </span>
+    </div>
+    <div class="mt-auto pt-4 border-t border-outline-variant/20">
+      <button [routerLink]="['/book-details', book.id]" class="w-full text-center text-primary font-label-md text-label-md border border-primary/30 hover:bg-primary/5 rounded-lg py-2 transition-colors">View Details</button>
+    </div>
+  </div>
+</article>
