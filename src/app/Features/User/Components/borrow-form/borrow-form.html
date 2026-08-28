@@ -1,0 +1,56 @@
+@if (store.selectedBook(); as book) {
+<!-- Success Alert Banner (Simulated State) -->
+<div class="mb-6 p-4 rounded-lg bg-primary-fixed border border-primary/10 flex items-start gap-4" role="alert">
+  <span class="material-symbols-outlined text-primary mt-0.5">check_circle</span>
+  <div class="flex-1">
+    <p class="text-on-primary-fixed font-medium">Your borrowing request has been submitted successfully.</p>
+  </div>
+  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-surface-container-lowest text-primary text-xs font-medium border border-primary/20">
+    Pending
+  </span>
+</div>
+<!-- Borrow Panel Card -->
+<div class="bg-surface-container-lowest rounded-xl p-6 ambient-shadow border border-outline-variant/20">
+  <h3 class="font-headline-md text-headline-md text-on-surface mb-6">Request to Borrow</h3>
+  <form class="space-y-6">
+    <div>
+      <label class="block text-sm font-medium text-on-surface mb-2" for="period">Borrowing Period</label>
+      <div class="relative">
+        <select class="block w-full rounded-lg border-outline-variant/50 bg-surface py-3 pl-4 pr-10 text-on-surface focus:border-primary focus:ring-primary focus:ring-1 focus:outline-none transition-shadow duration-200 hover:shadow-sm appearance-none" id="period" name="period" [disabled]="!book.isAvailable" [ngModel]="selectedPeriod()" (ngModelChange)="selectedPeriod.set($event)">
+          <option [value]="7">7 Days</option>
+          <option [value]="14">14 Days</option>
+          <option [value]="21">21 Days</option>
+        </select>
+        <span class="material-symbols-outlined absolute right-3 top-3 text-on-surface-variant pointer-events-none">expand_more</span>
+      </div>
+    </div>
+    <div class="flex items-center justify-between p-4 bg-surface-container-low rounded-lg">
+      <div class="flex items-center gap-3">
+        <span class="material-symbols-outlined text-on-surface-variant">calendar_today</span>
+        <div>
+          <p class="font-label-md text-label-md text-on-surface-variant text-xs uppercase tracking-wide">Pickup Date</p>
+          <p class="text-on-surface font-medium">{{ pickupDate() | date:'mediumDate' }}</p>
+        </div>
+      </div>
+      <span class="material-symbols-outlined text-outline-variant">arrow_forward</span>
+      <div class="flex items-center gap-3">
+        <span class="material-symbols-outlined text-on-surface-variant">event_busy</span>
+        <div>
+          <p class="font-label-md text-label-md text-on-surface-variant text-xs uppercase tracking-wide">Return By</p>
+          <p class="text-on-surface font-medium">{{ returnDate() | date:'mediumDate' }}</p>
+        </div>
+      </div>
+    </div>
+    <button class="w-full flex items-center justify-center gap-2 bg-primary text-on-primary py-3 px-6 rounded-lg font-label-md text-label-md transition-colors duration-200" 
+      [class.opacity-50]="!book.isAvailable" 
+      [class.cursor-not-allowed]="!book.isAvailable" 
+      [class.hover:bg-primary/90]="book.isAvailable" 
+      [class.active:scale-[0.98]]="book.isAvailable" 
+      [disabled]="!book.isAvailable" 
+      type="button">
+      <span class="material-symbols-outlined text-[20px]">book</span>
+      {{ book.isAvailable ? 'Request to Borrow' : 'Currently Unavailable' }}
+    </button>
+  </form>
+</div>
+}

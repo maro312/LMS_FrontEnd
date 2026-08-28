@@ -1,0 +1,44 @@
+<main class="pt-8 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+  @if (store.isLoading()) {
+    <div class="flex justify-center py-12">
+      <p class="text-on-surface-variant">Loading book details...</p>
+    </div>
+  } @else if (store.error()) {
+    <div class="bg-error-container text-on-error-container p-4 rounded-xl">
+      <p>{{ store.error() }}</p>
+    </div>
+  } @else if (store.selectedBook(); as book) {
+  <!-- Breadcrumbs -->
+  <nav aria-label="Breadcrumb" class="flex text-on-surface-variant mb-12 font-label-md text-label-md">
+    <ol class="inline-flex items-center space-x-1 md:space-x-2">
+      <li class="inline-flex items-center">
+        <a class="hover:text-primary transition-colors" routerLink="/catalogue">Catalogue</a>
+      </li>
+      <li>
+        <div class="flex items-center">
+          <span class="material-symbols-outlined text-sm mx-1">chevron_right</span>
+          <a class="hover:text-primary transition-colors">Book Details</a>
+        </div>
+      </li>
+      <li aria-current="page">
+        <div class="flex items-center">
+          <span class="material-symbols-outlined text-sm mx-1">chevron_right</span>
+          <span class="text-primary font-semibold">{{ book.title }}</span>
+        </div>
+      </li>
+    </ol>
+  </nav>
+  <!-- Two-Column Asymmetrical Grid -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter lg:gap-12">
+    <!-- Left Column: Visuals & Status (4 columns) -->
+    <div class="lg:col-span-4 flex flex-col items-center lg:items-start gap-6">
+      <app-book-cover></app-book-cover>
+    </div>
+    <!-- Right Column: Details & Actions (7 columns, 1 col gap) -->
+    <div class="lg:col-span-7 lg:col-start-6 flex flex-col">
+      <app-book-info></app-book-info>
+      <app-borrow-form></app-borrow-form>
+    </div>
+  </div>
+  }
+</main>

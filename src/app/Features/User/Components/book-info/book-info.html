@@ -1,0 +1,34 @@
+@if (store.selectedBook(); as book) {
+<!-- Title & Author -->
+<div class="mb-8">
+  <h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-2">{{ book.title }}</h1>
+  <p class="font-body-lg text-body-lg text-on-surface-variant">by {{ book.author }}</p>
+</div>
+<!-- Synopsis -->
+<div class="mb-10 text-on-surface/80 space-y-4 font-body-md text-body-md leading-relaxed">
+  <p>No matter your goals, this book offers a proven framework for improving--every day.</p>
+</div>
+<!-- Metadata Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12 border-t border-outline-variant/20 pt-8">
+  <div>
+    <p class="text-on-surface-variant font-label-md text-label-md mb-1 uppercase tracking-wider text-xs">ISBN</p>
+    <p class="text-on-surface">{{ book.isbn || 'N/A' }}</p>
+  </div>
+  <div>
+    <p class="text-on-surface-variant font-label-md text-label-md mb-1 uppercase tracking-wider text-xs">Publisher</p>
+    <p class="text-on-surface">{{ book.publisherName || 'N/A' }}</p>
+  </div>
+  <div>
+    <p class="text-on-surface-variant font-label-md text-label-md mb-1 uppercase tracking-wider text-xs">Date</p>
+    <p class="text-on-surface">{{ book.publishDate | date:'mediumDate' }}</p>
+  </div>
+  <div>
+    <p class="text-on-surface-variant font-label-md text-label-md mb-1 uppercase tracking-wider text-xs">Language</p>
+    <p class="text-on-surface">English</p>
+  </div>
+  <div>
+    <p class="text-on-surface-variant font-label-md text-label-md mb-1 uppercase tracking-wider text-xs">Copies</p>
+    <p class="text-on-surface">{{ book.totalCopies }} Total ({{ book.availableCopies }} Available)</p>
+  </div>
+</div>
+}
